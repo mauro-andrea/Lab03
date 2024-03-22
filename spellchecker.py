@@ -13,16 +13,25 @@ class SpellChecker:
         Gestisce l'input dell'utente, rimuovendo la punteggiatura dalla stringa e passa gli input all'algoritmo di correzione
         :param txtIn: stringa che indica l'input dell'utente
         :param language: stringa che indica la lingua seleziona dall'utente
-        :return:
         """
 
         testo = txtIn.strip("\n").lower()
         testo = replaceChars(testo)
 
         gestione = md.MultiDictionary()
+
+        print("Ricerca con il metodo contains: ")
         gestione.searchWord(testo, language)
         gestione.printError()
-        print(time.process_time())
+
+        print("\nAlgoritmo di ricerca Lineare: ")
+        gestione.searchWordLinear(testo, language)
+        gestione.printError()
+
+        print("\nAlgoritmo di ricerca Dicotomica: ")
+        gestione.searchWordDichotomic(testo, language)
+        gestione.printError()
+
 
     def printMenu(self):
         """
